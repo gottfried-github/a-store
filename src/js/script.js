@@ -24,34 +24,39 @@ function fieldsAndDesc(data) {
 }
 
 function newRow(row) {
-  var row = document.createElement('div')
+  var el = document.createElement('div')
 
   row.forEach((cell) => {
     var cellSpan = document.createElement('span')
     cellSpan.innerText = cell
-    row.appendChild(cell)
+    el.appendChild(cellSpan)
   })
 
-  return row
+  return el
 }
 
-function table(data) {
+function table(items) {
   var el = document.createElement('div')
 
   // add column names
-  el.appendChild(newRow(['', 'L', 'D', 'H']))
+  var row = newRow(['', 'L', 'D', 'H'])
+  row.className = "row"
+  el.appendChild(row)
   // var row_columnNames = ['', 'L', 'D', 'H']
 
-  data.forEach((product) => {
+  items.forEach((item) => {
     var row = newRow([
-      product.name,
-      product.sizes.l,
-      product.sizes.d,
-      product.sizes.h
+      item.name,
+      item.sizes.l,
+      item.sizes.d,
+      item.sizes.h
     ])
+    row.className = "row"
 
     el.appendChild(row)
   })
+
+  return el
 }
 
 /*
@@ -83,8 +88,8 @@ function main() {
       content.className = "content-slot fields-and-desc"
       contentBox.appendChild(content)
     } else if (tab.name == "dimensions") {
-      var content = table(tab.content)
-      content.el.className = "content-slot table"
+      var content = table(tab.content.items)
+      content.className = "content-slot table"
       contentBox.appendChild(content)
     }
   })

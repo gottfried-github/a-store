@@ -22,32 +22,32 @@ var data = {
     content: {
       items: [{
         name: "Sofa",
-        sizes: [{
+        sizes: {
           l: 80,
           d: 38,
           h: 36,
-        }]
+        }
       }, {
         name: "Condo Sofa",
-        sizes: [{
+        sizes: {
           l: 70,
           d: 38,
           h: 36,
-        }]
+        }
       }, {
         name: "Chair",
-        sizes: [{
+        sizes: {
           l: 35,
           d: 38,
           h: 36,
-        }]
+        }
       }, {
         name: "Love Seat",
-        sizes: [{
+        sizes: {
           l: 60,
           d: 38,
           h: 36,
-        }]
+        }
       }]
     }
   }]
