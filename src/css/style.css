@@ -15,8 +15,12 @@ body {
 }
 
 .photo_thumbs {
+  display: flex;
+
+  /*
   white-space: nowrap;
   overflow-y: scroll;
+  */
 }
 
 .large-view_container {
@@ -35,14 +39,22 @@ body {
 }
 
 .photo_thumb {
-  display: inline-block;
-  width: 350px;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  box-sizing: border-box;
+
+  width: 33%;
   height: 200px;
 
+  padding: 0px 2px;
+
   background-size: cover;
+  background-clip: content-box;
   background-position: center;
 
   /*
+  display: inline-block;
   float: left;
   */
 }
