@@ -59,26 +59,15 @@ function table(items) {
   return el
 }
 
-/*
-var row_columnNames = document.createElement('div')
-var blank = document.createElement('span') // .className =
-var l = document.createElement('span').innerText = "L"
-var d = document.createElement('span').innerText = "D"
-var h = document.createElement('span').innerText = "H"
-
-row_columnNames.appendChild(blank)
-row_columnNames.appendChild(l)
-row_columnNames.appendChild(d)
-row_columnNames.appendChild(h)
-*/
-
 function main() {
   var tabsContainer = document.querySelector(".info-tabs")
   var contentBox = document.querySelector(".info-content")
 
+  // id of currently active (visible) content element, in info-content
+  var contentActive = null
+
   data.tabs.forEach((tab) => {
     tab = newTab(tab)
-    tabsContainer.appendChild(tab.el)
 
     // var contentEl = document.createElement('div')
     // contentEl.className = "content-slot"
@@ -86,12 +75,47 @@ function main() {
     if (tab.name == "general") {
       var content = fieldsAndDesc(tab.content)
       content.className = "content-slot fields-and-desc"
+
+      // we create a unique id on content dom and store it in our tab,
+      // to be able to reference it from the tab later on
+      content.id = "info-general"
+      tab.el.dataset.contentId = "info-general"
+
       contentBox.appendChild(content)
+      contentActive = content.id
     } else if (tab.name == "dimensions") {
       var content = table(tab.content.items)
       content.className = "content-slot table"
+
+      // the dimensions tab is not visible, by default
+      content.className += " noned"
+
+      content.id = "info-dimensions"
+      tab.el.dataset.contentId = "info-dimensions"
+
       contentBox.appendChild(content)
     }
+
+    tab.el.addEventListener('click', function() {
+
+      if (contentActive == this.dataset.contentId)
+        return
+        
+      // select the content element, respective to the clicked tab
+      var content = contentBox.querySelector('#'+this.dataset.contentId)
+      var contentActiveEl = contentBox.querySelector('#'+contentActive)
+      console.log(contentActive, content)
+
+      // hide currently active content sheet
+      contentActiveEl.classList.add("noned")
+
+      // make our content visible somehow (either with display none/block, or
+      // using animation to scroll it into view, we'll see)
+      content.classList.remove("noned")
+      contentActive = content.id
+    })
+
+    tabsContainer.appendChild(tab.el)
   })
 }
 
