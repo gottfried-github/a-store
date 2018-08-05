@@ -26,7 +26,7 @@ body {
 .large-view_container {
   position: relative;
   float: left;
-  width: 70%;
+  width: 60%;
   height: 350px;
 
   /*
@@ -35,7 +35,45 @@ body {
 
 .info-container {
   float: left;
-  width: 30%;
+  width: 40%;
+}
+
+.info-container .info-tabs {
+  padding: 15px 0px;
+}
+
+.info-container .info-tabs span {
+
+  /*
+  display: inline-block;
+  width: 150px;
+  text-align: center;
+  margin: 30px 0px;
+  */
+  padding: 15px 30px;
+  background-color: grey;
+}
+
+.fields-and-desc {
+  /*
+  display: none;
+  */
+}
+
+.fields-and-desc span {
+  font-weight: bold;
+}
+
+.row span {
+  display: inline-block;
+  width: 50px;
+  text-align: center;
+  background-color: grey;
+}
+
+.row span:nth-child(1) {
+  width: 100px;
+  text-align: right;
 }
 
 .clearfloat {
