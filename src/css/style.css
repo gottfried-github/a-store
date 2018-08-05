@@ -15,6 +15,8 @@ body {
 }
 
 .photo_thumbs {
+  white-space: nowrap;
+  overflow-y: scroll;
 }
 
 .large-view_container {
@@ -33,19 +35,26 @@ body {
 }
 
 .photo_thumb {
-  float: left;
-  width: 33%;
+  display: inline-block;
+  width: 350px;
   height: 200px;
+
+  background-size: cover;
+  background-position: center;
+
+  /*
+  float: left;
+  */
 }
 
 .photo_thumbs .photo_thumb:nth-child(1) {
-  background-image: url("src/images/IMG_0644RS.jpg");
+  background-image: url("../images/IMG_0644RS.jpg");
 }
 
-.photo_thumbs .photo_thumb:nth-child(1) {
-  background-image: url("src/images/IMG_0652RS.jpg");
+.photo_thumbs .photo_thumb:nth-child(2) {
+  background-image: url("../images/IMG_0652RS.jpg");
 }
 
-.photo_thumbs .photo_thumb:nth-child(1) {
-  background-image: url("src/images/IMG_0713RS.jpg");
+.photo_thumbs .photo_thumb:nth-child(3) {
+  background-image: url("../images/IMG_0713RS.jpg");
 }
