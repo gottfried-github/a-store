@@ -1,12 +1,10 @@
-function newTab(tabData) {
+function newTab(tab) {
 
   var el = document.createElement("span")
-  el.innerText = tabData.name
+  el.innerText = tab.name
 
-  return {
-    el: el,
-    content: tabData.content
-  }
+  tab.el = el
+  return tab
 }
 
 function fieldsAndDesc(data) {
@@ -15,14 +13,14 @@ function fieldsAndDesc(data) {
   data.fields.forEach((field) => {
     // var span = document.createElement('span')
     // span.innerText = field.key
-    content += "<span>"+ field.key + "</span><br/>"
+    content += "<span>"+ field.key +":</span> "+ field.value +"<br/>"
   })
 
   content += "<h1>"+ "Description" + "</h1><br/>"
   content += data.description
 
   container.innerHTML = content
-  return content
+  return container
 }
 
 function newRow(row) {
@@ -70,19 +68,19 @@ row_columnNames.appendChild(h)
 */
 
 function main() {
-  var tabs = document.querySelector(".info-tabs")
+  var tabsContainer = document.querySelector(".info-tabs")
   var contentBox = document.querySelector(".info-content")
 
-  tabs.forEach((tab) => {
-    var tabDom = newTab(tab)
-    tabs.appendChild(tab.el)
+  data.tabs.forEach((tab) => {
+    tab = newTab(tab)
+    tabsContainer.appendChild(tab.el)
 
     // var contentEl = document.createElement('div')
     // contentEl.className = "content-slot"
 
     if (tab.name == "general") {
       var content = fieldsAndDesc(tab.content)
-      content.el.className = "content-slot fields-and-desc"
+      content.className = "content-slot fields-and-desc"
       contentBox.appendChild(content)
     } else if (tab.name == "dimensions") {
       var content = table(tab.content)
@@ -92,4 +90,4 @@ function main() {
   })
 }
 
-// window.addEventListener("load", main)
+window.addEventListener("load", main)

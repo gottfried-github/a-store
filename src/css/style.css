@@ -55,7 +55,9 @@ body {
 }
 
 .fields-and-desc {
+  /*
   display: none;
+  */
 }
 
 .fields-and-desc span {
