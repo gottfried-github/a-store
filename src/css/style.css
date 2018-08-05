@@ -24,9 +24,13 @@ body {
 }
 
 .large-view_container {
+  position: relative;
   float: left;
   width: 70%;
   height: 350px;
+
+  /*
+  */
 }
 
 .info-container {
@@ -69,4 +73,35 @@ body {
 
 .photo_thumbs .photo_thumb:nth-child(3) {
   background-image: url("../images/IMG_0713RS.jpg");
+}
+
+.photo-enlarged {
+  position: absolute;
+  top: 0px;
+
+  width: 100%;
+  height: 100%;
+
+  background-size: cover;
+  background-position: center;
+  background-image: url("../images/IMG_0644RS.jpg");
+
+  visibility: hidden;
+
+  /*
+  height: 350px;
+  */
+}
+
+.large-view_container .sketchfab {
+  height: 100%;
+
+  /*
+  width: 100%;
+  */
+}
+
+.large-view_container iframe {
+  width: 100%;
+  height: 100%;
 }
