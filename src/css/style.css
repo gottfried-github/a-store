@@ -1,0 +1,51 @@
+body {
+
+}
+
+.product_container {
+
+}
+
+.product_container h1 {
+  margin: 0px auto;
+}
+
+.product_content-wrapper {
+  margin: 0px auto;
+}
+
+.photo_thumbs {
+}
+
+.large-view_container {
+  float: left;
+  width: 70%;
+  height: 350px;
+}
+
+.info-container {
+  float: left;
+  width: 30%;
+}
+
+.clearfloat {
+  clear: left;
+}
+
+.photo_thumb {
+  float: left;
+  width: 33%;
+  height: 200px;
+}
+
+.photo_thumbs .photo_thumb:nth-child(1) {
+  background-image: url("src/images/IMG_0644RS.jpg");
+}
+
+.photo_thumbs .photo_thumb:nth-child(1) {
+  background-image: url("src/images/IMG_0652RS.jpg");
+}
+
+.photo_thumbs .photo_thumb:nth-child(1) {
+  background-image: url("src/images/IMG_0713RS.jpg");
+}
