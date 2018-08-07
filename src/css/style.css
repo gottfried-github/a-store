@@ -45,55 +45,22 @@ h2 {
 }
 
 .large-view_wrapper {
+  position: relative;
   float: left;
-  width: 70%;
-  height: 400px;
+  width: 63%;
   margin: 2px 0px;
+
+  /*
   box-sizing: border-box;
   padding: 0px 2px;
+  height: 400px;
+  */
 }
 
 .large-view_container {
-  position: relative;
+  padding-bottom: 55%;
+  /*
   height: 100%;
-  /*
-  */
-}
-
-.info-container {
-  float: left;
-  width: 30%;
-
-  box-sizing: border-box;
-  margin: 2px 0px;
-  padding: 0px 2px;
-
-  overflow: hidden;
-
-  /*
-  overflow-y: scroll;
-  height: 400px;
-  */
-}
-
-.photo_thumb {
-  flex-grow: 0;
-  flex-shrink: 0;
-
-  box-sizing: border-box;
-
-  width: 33%;
-  height: 250px;
-
-  padding: 0px 2px;
-
-  background-size: cover;
-  background-clip: content-box;
-  background-position: center;
-
-  /*
-  display: inline-block;
-  float: left;
   */
 }
 
@@ -116,16 +83,70 @@ h2 {
 }
 
 .large-view_container .sketchfab {
+  position: absolute;
+  top: 0px;
+
+  width: 100%;
   height: 100%;
 
   /*
-  width: 100%;
   */
 }
 
 .large-view_container iframe {
   width: 100%;
   height: 100%;
+}
+
+.info-container {
+  float: left;
+  width: 37%;
+
+  box-sizing: border-box;
+  margin: 2px 0px;
+  padding: 0px 2px;
+
+  overflow: hidden;
+
+  /*
+  overflow-y: scroll;
+  height: 400px;
+  */
+}
+
+.photo_thumbs .ratio-holder-box {
+
+  position: relative;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  width: 33.3%;
+}
+
+.photo_thumbs .ratio-holder {
+  padding-bottom: 55%;
+}
+
+.photo_thumb {
+  position: absolute;
+  top: 0px;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 0px 2px;
+
+  background-size: cover;
+  background-clip: content-box;
+  background-position: center;
+
+  /*
+
+
+  height: 250px;
+  display: inline-block;
+  float: left;
+  */
 }
 
 .info-container .info-tabs {
@@ -185,15 +206,15 @@ h2 {
   font-weight: bold;
 }
 
-.photo_thumbs .photo_thumb:nth-child(1) {
+.photo_thumbs .ratio-holder-box:nth-child(1) .photo_thumb {
   background-image: url("../images/IMG_0644RS.jpg");
 }
 
-.photo_thumbs .photo_thumb:nth-child(2) {
+.photo_thumbs .ratio-holder-box:nth-child(2) .photo_thumb {
   background-image: url("../images/IMG_0652RS.jpg");
 }
 
-.photo_thumbs .photo_thumb:nth-child(3) {
+.photo_thumbs .ratio-holder-box:nth-child(3) .photo_thumb {
   background-image: url("../images/IMG_0713RS.jpg");
 }
 
