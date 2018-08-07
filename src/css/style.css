@@ -26,7 +26,12 @@ h2 {
 }
 
 .product_container h1 {
+
+  font-size: 1.5em;
+  margin: 15px auto;
+  /*
   margin: 0px auto;
+  */
 }
 
 .product_content-wrapper {
