@@ -1,9 +1,28 @@
 body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  /*
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  */
 
 }
 
-.product_container {
+h1 {
+  /*
+  font-size: 2em;
+  */
+}
 
+h2 {
+  /*
+  font-size: 1.2em;
+  */
+}
+
+.product_container {
+  margin: 0px auto;
+  max-width: 1560px;
 }
 
 .product_container h1 {
@@ -16,6 +35,8 @@ body {
 
 .photo_thumbs {
   display: flex;
+  flex-wrap: wrap;
+  margin: 2px 0px;
 
   /*
   white-space: nowrap;
@@ -23,57 +44,36 @@ body {
   */
 }
 
+.large-view_wrapper {
+  float: left;
+  width: 70%;
+  height: 400px;
+  margin: 2px 0px;
+  box-sizing: border-box;
+  padding: 0px 2px;
+}
+
 .large-view_container {
   position: relative;
-  float: left;
-  width: 60%;
-  height: 350px;
-
+  height: 100%;
   /*
   */
 }
 
 .info-container {
   float: left;
-  width: 40%;
-}
+  width: 30%;
 
-.info-container .info-tabs {
-  padding: 15px 0px;
-}
+  box-sizing: border-box;
+  margin: 2px 0px;
+  padding: 0px 2px;
 
-.info-container .info-tabs span {
+  overflow: hidden;
 
   /*
-  display: inline-block;
-  width: 150px;
-  text-align: center;
-  margin: 30px 0px;
+  overflow-y: scroll;
+  height: 400px;
   */
-  padding: 15px 30px;
-  background-color: grey;
-}
-
-.fields-and-desc {
-  /*
-  display: none;
-  */
-}
-
-.fields-and-desc span {
-  font-weight: bold;
-}
-
-.row span {
-  display: inline-block;
-  width: 50px;
-  text-align: center;
-  background-color: grey;
-}
-
-.row span:nth-child(1) {
-  width: 100px;
-  text-align: right;
 }
 
 .photo_thumb {
@@ -83,7 +83,7 @@ body {
   box-sizing: border-box;
 
   width: 33%;
-  height: 200px;
+  height: 250px;
 
   padding: 0px 2px;
 
@@ -97,18 +97,6 @@ body {
   */
 }
 
-.photo_thumbs .photo_thumb:nth-child(1) {
-  background-image: url("../images/IMG_0644RS.jpg");
-}
-
-.photo_thumbs .photo_thumb:nth-child(2) {
-  background-image: url("../images/IMG_0652RS.jpg");
-}
-
-.photo_thumbs .photo_thumb:nth-child(3) {
-  background-image: url("../images/IMG_0713RS.jpg");
-}
-
 .photo-enlarged {
   position: absolute;
   top: 0px;
@@ -120,9 +108,9 @@ body {
   background-position: center;
   background-image: url("../images/IMG_0644RS.jpg");
 
-  visibility: hidden;
 
   /*
+  visibility: hidden;
   height: 350px;
   */
 }
@@ -140,10 +128,141 @@ body {
   height: 100%;
 }
 
+.info-container .info-tabs {
+  padding: 15px 0px;
+}
+
+.info-container .info-tabs span {
+
+  /*
+  display: inline-block;
+  width: 150px;
+  text-align: center;
+  margin: 30px 0px;
+  background-color: grey;
+  */
+  padding: 15px 30px;
+}
+
+.info-content {
+  overflow-y: scroll;
+  max-height: 350px;
+  min-height: 350px;
+
+  margin-right: -25px;
+  padding-right: 25px;
+}
+
+.fields-and-desc {
+  /*
+  display: none;
+  height: 400px;
+  */
+
+}
+
+.fields-and-desc span {
+  font-weight: bold;
+}
+
+.row.column-names {
+  font-weight: bold;
+}
+
+.row span {
+  display: inline-block;
+  width: 50px;
+  text-align: center;
+
+  /*
+  background-color: grey;
+  */
+}
+
+.row span:nth-child(1) {
+  width: 100px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.photo_thumbs .photo_thumb:nth-child(1) {
+  background-image: url("../images/IMG_0644RS.jpg");
+}
+
+.photo_thumbs .photo_thumb:nth-child(2) {
+  background-image: url("../images/IMG_0652RS.jpg");
+}
+
+.photo_thumbs .photo_thumb:nth-child(3) {
+  background-image: url("../images/IMG_0713RS.jpg");
+}
+
 .clearfloat {
   clear: left;
 }
 
 .noned {
   display: none;
+}
+
+@media (max-width: 1024px) {
+  .photo_thumb {
+    height: 200px;
+  }
+
+  .large-view_wrapper {
+    float: none;
+    clear: left;
+    width: auto;
+    /*
+    height: 300px;
+    */
+  }
+
+  .info-container {
+    float: none;
+    width: auto;
+    clear: left;
+    /*
+    height: 300px;
+    */
+  }
+
+  .info-content {
+    max-height: 350px;
+  }
+
+  .fields-and-desc {
+    /*
+    display: none;
+    height: 400px;
+    */
+
+  }
+}
+
+@media (max-width: 768px) {
+  .photo_thumb {
+    width: 100%;
+    height: 350px;
+    margin: 2px 0px;
+  }
+
+  .large-view_wrapper {
+    float: none;
+    clear: left;
+    width: auto;
+    /*
+    height: 300px;
+    */
+  }
+
+  .info-container {
+    float: none;
+    width: auto;
+    clear: left;
+    /*
+    height: 300px;
+    */
+  }
 }
