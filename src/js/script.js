@@ -16,7 +16,7 @@ function fieldsAndDesc(data) {
     content += "<span>"+ field.key +":</span> "+ field.value +"<br/>"
   })
 
-  content += "<h1>"+ "Description" + "</h1><br/>"
+  content += "<h2>"+ "Description" + "</h2>"
   content += data.description
 
   container.innerHTML = content
@@ -40,7 +40,7 @@ function table(items) {
 
   // add column names
   var row = newRow(['', 'L', 'D', 'H'])
-  row.className = "row"
+  row.className = "row column-names"
   el.appendChild(row)
   // var row_columnNames = ['', 'L', 'D', 'H']
 
@@ -60,8 +60,9 @@ function table(items) {
 }
 
 function main() {
-  var tabsContainer = document.querySelector(".info-tabs")
-  var contentBox = document.querySelector(".info-content")
+  var productContainer = document.querySelector(".product_container")
+  var tabsContainer = productContainer.querySelector(".info-tabs")
+  var contentBox = productContainer.querySelector(".info-content")
 
   // id of currently active (visible) content element, in info-content
   var contentActive = null
@@ -100,7 +101,7 @@ function main() {
 
       if (contentActive == this.dataset.contentId)
         return
-        
+
       // select the content element, respective to the clicked tab
       var content = contentBox.querySelector('#'+this.dataset.contentId)
       var contentActiveEl = contentBox.querySelector('#'+contentActive)
@@ -116,6 +117,28 @@ function main() {
     })
 
     tabsContainer.appendChild(tab.el)
+  })
+
+  var thumbs = productContainer.querySelectorAll(".photo_thumb")
+  var largeView = productContainer.querySelector(".photo-enlarged")
+
+  console.log(thumbs)
+
+  thumbs.forEach((thumb) => {
+    thumb.addEventListener('click', function() {
+      console.log("thumb clicked")
+      var img = new Image()
+
+      img.onload = (function(imgLoaded) {
+        return function() {
+          console.log("loaded image", imgLoaded.src)
+          largeView.style.backgroundImage = "url("+ imgLoaded.src +")" // thumb.dataset.url
+        }
+      })(img)
+      console.log(thumb.dataset.url)
+
+      img.src = thumb.dataset.url
+    })
   })
 }
 
