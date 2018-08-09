@@ -223,6 +223,30 @@ h2 {
   background-image: url("../images/IMG_0713RS.jpg");
 }
 
+.large-photo {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+}
+
+.large-photo img {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.large-photo-anim {
+  transition: opacity 300ms ease-in;
+}
+
 .clearfloat {
   clear: left;
 }
