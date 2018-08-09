@@ -1,16 +1,18 @@
 body {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  /*
-  font-family: 'Roboto', sans-serif;
   font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+
+  background-color: #f2f2f2ff;
+  /*
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
   */
 
 }
 
 h1 {
   /*
-  font-size: 2em;
   */
 }
 
@@ -21,8 +23,21 @@ h2 {
 }
 
 .product_container {
+  box-sizing: border-box;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 100px;
+  padding-right: 100px;
+  max-width: 1400px;
+
+  /*
+  width: 100%;
+  width: 100%;
+  margin: 50px auto auto 0px;
   margin: 0px auto;
   max-width: 1560px;
+  */
 }
 
 .product_container h1 {
@@ -80,9 +95,9 @@ h2 {
   background-position: center;
   background-image: url("../images/IMG_0644RS.jpg");
 
+  visibility: hidden;
 
   /*
-  visibility: hidden;
   height: 350px;
   */
 }
@@ -101,22 +116,6 @@ h2 {
 .large-view_container iframe {
   width: 100%;
   height: 100%;
-}
-
-.info-container {
-  float: left;
-  width: 37%;
-
-  box-sizing: border-box;
-  margin: 2px 0px;
-  padding: 0px 2px;
-
-  overflow: hidden;
-
-  /*
-  overflow-y: scroll;
-  height: 400px;
-  */
 }
 
 .photo_thumbs .ratio-holder-box {
@@ -154,8 +153,67 @@ h2 {
   */
 }
 
+.info-container .info-header,
+.info-container .info-tabs,
+.info-container .info-content {
+  background-color: #ffffffff;
+  margin: 8px 0px;
+  /*
+  padding: 0.5em 0px;
+  */
+}
+
+.info-container {
+  float: left;
+  width: 37%;
+
+  box-sizing: border-box;
+  margin: 2px 0px;
+  padding: 0px 2px 0px 0px;
+
+  overflow: hidden;
+
+  /*
+  overflow-y: scroll;
+  height: 400px;
+  */
+}
+
+.info-container .info-header {
+  margin-top: 0px;
+  /*
+  padding: 0.5em 0px;
+  */
+}
+
+.info-container .info-header .float-box {
+  padding: 0.5em 1em;
+  margin: 1em 0px 1.7em 0px;
+  float: left;
+  /*
+  padding: 1em 0px 1.3em 0px;
+  */
+}
+
+.info-container .info-header .fieldname {
+  margin-right: 1em;
+  color: #c0c0c0ff;
+}
+
+.info-container .info-header .cta {
+  float: right;
+  padding: 0.5em 1em;
+  margin: 1em 1em 1.7em 0px;
+
+  background-color: #ed1e26ff;
+
+  /*
+  padding: 1em 1em 1.3em 1em;
+  */
+}
+
 .info-container .info-tabs {
-  padding: 15px 0px;
+  padding: 5px 1em;
 }
 
 .info-container .info-tabs span {
@@ -167,16 +225,21 @@ h2 {
   margin: 30px 0px;
   background-color: grey;
   */
-  padding: 15px 30px;
+  padding: 5px 1em 5px 0px;
 }
 
-.info-content {
+.info-container .info-content {
   overflow-y: scroll;
-  max-height: 350px;
-  min-height: 350px;
 
   margin-right: -25px;
+  padding: 1em 25px 1em 1em;
+
+  /*
   padding-right: 25px;
+  max-height: 200px;
+  padding-left: 1em;
+  min-height: 350px;
+  */
 }
 
 .fields-and-desc {
@@ -249,6 +312,7 @@ h2 {
 
 .clearfloat {
   clear: left;
+  clear: right;
 }
 
 .noned {
