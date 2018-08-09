@@ -268,6 +268,20 @@ function main() {
     // largeView.classList.add('noned')
   })
 
+  // load the 3d model
+  var modelContainer = document.querySelector('.sketchfab')
+
+  var modelFrame = document.createElement('iframe')
+  modelFrame.setAttribute('frameborder', '0')
+  modelFrame.setAttribute('allow', 'autoplay; fullscreen; vr')
+  modelFrame.setAttribute('mozallowfullscreen', 'true')
+  modelFrame.setAttribute('webkitallowfullscreen', 'true')
+
+  modelFrame.onload = () => {
+  }
+
+  modelFrame.src = 'https://sketchfab.com/models/4853024f767749869c11a414098ea673/embed?preload=1'
+  modelContainer.appendChild(modelFrame)
 }
 
 window.addEventListener("load", main)
