@@ -59,6 +59,94 @@ function table(items) {
   return el
 }
 
+function fitPhoto(container, image) {
+
+  var containerRects = container.getBoundingClientRect()
+  var imageRects = image.getBoundingClientRect()
+
+  if (imageRects.width == 0 || imageRects.height == 0)
+    throw new Error('image side is 0')
+
+  // we define our ratio based on width:
+  var containerRatio = containerRects.width / containerRects.height
+  var imageRatio = imageRects.width / imageRects.height
+
+  console.log('fitPhoto', imageRects, image)
+  console.log('fitPhoto', containerRects, container)
+
+  if (imageRatio > containerRatio) {
+    // fit picture by width
+    // $picture.width(theWindow.width + 'px')
+    // $picture.height(theWindow.width / pictureRatio + 'px')
+    // return $picture.get(0);
+
+    var imageWidth = containerRects.width
+    // image.style.width = containerRects.width.toString()+ 'px'
+
+    var imageHeight = containerRects.width / imageRatio
+    // image.style.height = imageHeight.toString() + 'px'
+    console.log('fitPhoto, imgRatio > contRatio' )
+    return {
+      w: imageWidth,
+      h: imageHeight
+    }
+  } else if (imageRatio < containerRatio) {
+    // fit picture by height
+
+    var imageWidth = containerRects.height * imageRatio
+    // image.style.width = imageWidth.toString() +'px'
+
+    var imageHeight = containerRects.height
+    // image.style.height = containerRects.height.toString() +'px'
+    console.log('fitPhoto, imgRatio < contRatio' )
+    return {
+      w: imageWidth,
+      h: imageHeight
+    }
+  } else {
+    return {
+      w: imageRects.width,
+      h: imageRects.height
+    }
+  }
+}
+
+function show(el, beforeshow, aftershow) {
+  const classTransition = 'large-photo-anim'
+  const classNoned = 'noned'
+
+  el.classList.remove(classNoned)
+  beforeshow()
+
+  el.classList.add(classTransition)
+
+  function transitionendCb() {
+    el.classList.remove(classTransition)
+    el.removeEventListener('transitionend', transitionendCb)
+    aftershow()
+  }
+
+  el.addEventListener('transitionend', transitionendCb)
+  el.style.opacity = '1'
+}
+
+function hide(el) {
+  const classTransition = 'large-photo-anim'
+  const classNoned = 'noned'
+
+  el.classList.add(classTransition)
+
+  function transitionendCb() {
+    el.classList.remove(classTransition)
+    el.classList.add(classNoned)
+    el.removeEventListener('transitionend', transitionendCb)
+    // afterhide()
+  }
+
+  el.addEventListener('transitionend', transitionendCb)
+  el.style.opacity = '0'
+}
+
 function main() {
   var productContainer = document.querySelector(".product_container")
   var tabsContainer = productContainer.querySelector(".info-tabs")
@@ -120,7 +208,9 @@ function main() {
   })
 
   var thumbs = productContainer.querySelectorAll(".photo_thumb")
-  var largeView = productContainer.querySelector(".photo-enlarged")
+  var largeView = document.querySelector(".large-photo")
+  var largeCurrent = new Image()
+  largeView.appendChild(largeCurrent)
 
   console.log(thumbs)
 
@@ -132,7 +222,27 @@ function main() {
       img.onload = (function(imgLoaded) {
         return function() {
           console.log("loaded image", imgLoaded.src)
-          largeView.style.backgroundImage = "url("+ imgLoaded.src +")" // thumb.dataset.url
+          imgLoaded.className = 'fullsize'
+          largeView.replaceChild(imgLoaded, largeCurrent)
+          largeCurrent = imgLoaded
+
+          // imgLoaded.style.visibility = 'hidden'
+          // largeView.classList.remove('noned')
+
+          show(largeView,
+            // beforeshow - fires after noned class is removed, but before opacity is set
+            () => {
+              var newDims = fitPhoto(largeView, imgLoaded)
+              imgLoaded.style.width = newDims.w +'px'
+              imgLoaded.style.height = newDims.h +'px'
+            },
+            () => {
+
+            }
+          )
+
+          // imgLoaded.style.visibility = 'visible'
+          // largeView.style.backgroundImage = "url("+ imgLoaded.src +")" // thumb.dataset.url
         }
       })(img)
       console.log(thumb.dataset.url)
@@ -140,6 +250,17 @@ function main() {
       img.src = thumb.dataset.url
     })
   })
+
+  largeView.addEventListener('click', (ev) => {
+    console.log(ev)
+    // return if the click bubbles from the image (we don't want to close the view if user clicks on image)
+    if (ev.target.className == 'fullsize')
+     return
+
+     hide(largeView)
+    // largeView.classList.add('noned')
+  })
+
 }
 
 window.addEventListener("load", main)
