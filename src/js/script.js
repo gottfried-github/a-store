@@ -154,6 +154,7 @@ function main() {
 
   // id of currently active (visible) content element, in info-content
   var contentActive = null
+  var tabActiveEl = null
 
   data.tabs.forEach((tab) => {
     tab = newTab(tab)
@@ -172,6 +173,8 @@ function main() {
 
       contentBox.appendChild(content)
       contentActive = content.id
+      tabActiveEl = tab.el
+      tabActiveEl.classList.add('active')
     } else if (tab.name == "dimensions") {
       var content = table(tab.content.items)
       content.className = "content-slot table"
@@ -196,11 +199,14 @@ function main() {
       console.log(contentActive, content)
 
       // hide currently active content sheet
-      contentActiveEl.classList.add("noned")
-
+      contentActiveEl.classList.add('noned')
+      tabActiveEl.classList.remove('active')
       // make our content visible somehow (either with display none/block, or
       // using animation to scroll it into view, we'll see)
-      content.classList.remove("noned")
+      content.classList.remove('noned')
+      this.classList.add('active')
+
+      tabActiveEl = this
       contentActive = content.id
     })
 
@@ -209,8 +215,9 @@ function main() {
 
   var thumbs = productContainer.querySelectorAll(".photo_thumb")
   var largeView = document.querySelector(".large-photo")
+  var largePhotoBox = largeView.querySelector(".large-photo-box")
   var largeCurrent = new Image()
-  largeView.appendChild(largeCurrent)
+  largePhotoBox.appendChild(largeCurrent)
 
   console.log(thumbs)
 
@@ -223,7 +230,7 @@ function main() {
         return function() {
           console.log("loaded image", imgLoaded.src)
           imgLoaded.className = 'fullsize'
-          largeView.replaceChild(imgLoaded, largeCurrent)
+          largePhotoBox.replaceChild(imgLoaded, largeCurrent)
           largeCurrent = imgLoaded
 
           // imgLoaded.style.visibility = 'hidden'
@@ -232,7 +239,7 @@ function main() {
           show(largeView,
             // beforeshow - fires after noned class is removed, but before opacity is set
             () => {
-              var newDims = fitPhoto(largeView, imgLoaded)
+              var newDims = fitPhoto(largePhotoBox, imgLoaded)
               imgLoaded.style.width = newDims.w +'px'
               imgLoaded.style.height = newDims.h +'px'
             },
