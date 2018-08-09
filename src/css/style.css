@@ -53,6 +53,11 @@ h2 {
   margin: 0px auto;
 }
 
+.product-wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
 .photo_thumbs {
   display: flex;
   flex-wrap: wrap;
@@ -66,11 +71,12 @@ h2 {
 
 .large-view_wrapper {
   position: relative;
-  float: left;
   width: 63%;
   margin: 2px 0px;
+  flex-shrink: 0;
 
   /*
+  float: left;
   box-sizing: border-box;
   padding: 0px 2px;
   height: 400px;
@@ -164,22 +170,29 @@ h2 {
 }
 
 .info-container {
-  float: left;
+  flex-shrink: 0;
   width: 37%;
 
   box-sizing: border-box;
   margin: 2px 0px;
   padding: 0px 2px 0px 0px;
 
+  display: flex;
+  flex-direction: column;
+
   overflow: hidden;
 
   /*
+  float: left;
+
+  justify-content:
   overflow-y: scroll;
   height: 400px;
   */
 }
 
 .info-container .info-header {
+  flex-grow: 0;
   margin-top: 0px;
   /*
   padding: 0.5em 0px;
@@ -213,6 +226,7 @@ h2 {
 }
 
 .info-container .info-tabs {
+  flex-grow: 0;
   padding: 5px 1em;
 }
 
@@ -229,12 +243,14 @@ h2 {
 }
 
 .info-container .info-content {
+  flex-grow: 1;
   overflow-y: scroll;
 
-  margin-right: -25px;
+  margin: 8px -25px 0px 0px;
   padding: 1em 25px 1em 1em;
 
   /*
+  margin-right: -25px;
   padding-right: 25px;
   max-height: 200px;
   padding-left: 1em;
@@ -292,7 +308,7 @@ h2 {
   left: 0px;
 
   width: 100vw;
-  height: 100vh;
+  height: 70vh;
 
   display: flex;
   justify-content: center;
@@ -319,38 +335,28 @@ h2 {
   display: none;
 }
 
+/*
 @media (max-width: 1024px) {
   .photo_thumb {
-    height: 200px;
   }
 
   .large-view_wrapper {
     float: none;
     clear: left;
     width: auto;
-    /*
-    height: 300px;
-    */
   }
 
   .info-container {
     float: none;
     width: auto;
     clear: left;
-    /*
-    height: 300px;
-    */
   }
 
   .info-content {
-    max-height: 350px;
+
   }
 
   .fields-and-desc {
-    /*
-    display: none;
-    height: 400px;
-    */
 
   }
 }
@@ -366,17 +372,12 @@ h2 {
     float: none;
     clear: left;
     width: auto;
-    /*
-    height: 300px;
-    */
   }
 
   .info-container {
     float: none;
     width: auto;
     clear: left;
-    /*
-    height: 300px;
-    */
   }
 }
+*/
